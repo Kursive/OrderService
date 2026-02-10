@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OrderService.Application.DTos.Responses
 {
-    public record OrderResponse(Guid Id, OrderStatus Status, List<OrderItemResponse> Items);// лучше IReadOnlyCollection 
+    public record OrderResponse(Guid Id, OrderStatus Status, IReadOnlyCollection<OrderItemResponse> Items);// лучше IReadOnlyCollection 
     //что клиент получил все заказы 
 
 }

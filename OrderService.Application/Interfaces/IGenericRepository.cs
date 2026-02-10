@@ -14,6 +14,6 @@ namespace OrderService.Application.Interfaces
         Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken);
         Task<T> CreateOrder(T order,CancellationToken cancellationToken);
         Task <List<T>> GetAllAsync(CancellationToken cancellationToken);
-        
+        Task SaveChangeAsync(CancellationToken cancellationToken);
     }
 }

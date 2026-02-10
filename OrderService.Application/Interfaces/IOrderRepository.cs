@@ -9,7 +9,7 @@ namespace OrderService.Application.Interfaces
 {
     public interface IOrderRepository : IGenericRepository<Order>
     {
-        Task SaveChangesAsync();
+        
     }
 }
 

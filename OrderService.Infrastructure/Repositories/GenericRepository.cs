@@ -18,8 +18,7 @@ namespace OrderService.Infrastructure.Repositories
         }
         public async Task<T> CreateOrder(T order, CancellationToken cancellationToken=default)
         {
-            await _dbContext.Set<T>().AddAsync(order);
-            await _dbContext.SaveChangesAsync(cancellationToken);
+            await _dbContext.Set<T>().AddAsync(order,cancellationToken);
             return order;
         }
         public async Task<List<T>> GetAllAsync(CancellationToken cancellationToken=default)
@@ -27,6 +26,11 @@ namespace OrderService.Infrastructure.Repositories
             return await _dbContext.Set<T>().ToListAsync(cancellationToken);
         }
         public async Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default) => await _dbContext.Set<T>().FindAsync(id, cancellationToken);
+
+        public async Task SaveChangeAsync(CancellationToken cancellationToken)
+        {
+            await _dbContext.SaveChangesAsync(cancellationToken);
+        }
     }
 
 }

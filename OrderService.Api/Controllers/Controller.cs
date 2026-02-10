@@ -34,7 +34,7 @@ namespace OrderService.Api.Controllers
                     i.Price,
                     i.Created
                 )).ToList()
-            );
+            );// в бизнес логику
 
             return Ok(response);
         }
@@ -51,20 +51,15 @@ namespace OrderService.Api.Controllers
                    i.Price,
                    i.Created
                 )).ToList()
-            )).ToList();
+            )).ToList();// убрать в хэндлер с помощью AutoMapper
 
             return Ok(response);
         }
         [HttpPost]
         public async Task<ActionResult<Guid>> Create(
-            [FromBody] CreateOrderRequestDto dto)
+            [FromBody] AddOrderItemRequest request)
         {
-            var command = new AddOrderItemRequest(
-                dto.Productname,
-                dto.Price
-            );
-
-            var orderId = await _mediator.Send(command);
+            var orderId = await _mediator.Send(request);
             return Ok(orderId);
         }
 

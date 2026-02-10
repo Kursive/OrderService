@@ -23,10 +23,14 @@ namespace OrderService.Application.Commands.CreateOrder
         public async Task<Guid> Handle(CreateOrderCommand command,CancellationToken cancellationToken)
         {
             var order = new Order(Guid.Empty);
-            var item = new OrderItem(command.ProductName,  command.Price);
+            var item = new OrderItem(command.ProductName, command.Price);
             order.Create(item);
             await _orderRepository.CreateOrder(order, cancellationToken);
+            await _orderRepository.SaveChangeAsync(cancellationToken);
             return order.Id;
+
+
+
         }
     }
 }

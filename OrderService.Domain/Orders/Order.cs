@@ -14,8 +14,7 @@ namespace OrderService.Domain.Orders
         public Guid Id { get; }
         public OrderStatus Status { get; private set; }
 
-        public IReadOnlyCollection<OrderItem> Items => _items.AsReadOnly();
-
+        public IReadOnlyCollection<OrderItem> Items => _items;
         private Order() { } // нужен для EF Core
 
         public Order(Guid id)

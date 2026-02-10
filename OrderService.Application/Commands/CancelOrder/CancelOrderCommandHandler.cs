@@ -21,7 +21,7 @@ namespace OrderService.Application.Commands.CancelOrder
         {
             var order = await _orderRepository.GetByIdAsync(request.id,cancellationToken) ?? throw new InvalidOperationException("Заказ не найден");
             order.Cancel();
-            await _orderRepository.SaveChangesAsync();
+            await _orderRepository.SaveChangeAsync(cancellationToken);
             return order.Id;
         }//
     }

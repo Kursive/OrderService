@@ -21,7 +21,7 @@ namespace OrderService.Application.Queries.GetAllOrders
         {
             var order= await _orderRepository.GetAllAsync(cancellationToken);
             return order;
-        }//
+        }// добавить класс в котором мы будем прописывать orderItemdto
     }
 }
 
